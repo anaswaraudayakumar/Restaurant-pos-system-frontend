@@ -11,3 +11,18 @@ export const getRandomBackGround = () => {
 
   return colors[Math.floor(Math.random() * colors.length)];
 };
+
+export const getInitialName = (name)=>{
+    if(!name) return ""
+    return name.split(" ").map(word=>word[0]).join("").toUpperCase()
+}
+
+export const getDate = (date) => {
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  // Uses proper backticks (`) and closes the getFullYear() evaluation correctly
+  return `${months[date.getMonth()]} ${String(date.getDate()).padStart(2, '0')}, ${date.getFullYear()}`;
+};

@@ -14,7 +14,7 @@ function TableCard({name,status,initials,seats}) {
         navigate('/menu')
     }
   return (
-    <div onClick={handleClick} className='w-75 bg-neutral-800 hover:bg-gray-800 p-4 rounded-lg mb-4 cursor-pointer '>
+    <div onClick={()=>handleClick(name)} className='w-75 bg-neutral-800 hover:bg-gray-800 p-4 rounded-lg mb-4 cursor-pointer '>
         <div className='flex items-center justify-between px-1'>
             <h1 className='text-white text-xl font-semibold'>{name}</h1>
             <p className={`${status==="Booked"? "text-green-600 bg-green-300 ":" text-white bg-amber-400 "}px-2  py-1 rounded-lg`}>{status}</p>

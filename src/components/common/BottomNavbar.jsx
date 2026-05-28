@@ -6,6 +6,7 @@ import { MdOutlineReorder, MdTableBar } from 'react-icons/md'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Modal from './Modal'
 import { useDispatch } from 'react-redux'
+import { setCustomer } from '../../redux/slices/customerSlice'
 
 function BottomNavbar() {
   const navigate =useNavigate(0)
@@ -15,8 +16,8 @@ function BottomNavbar() {
   const [guestCount,setGuestCount] = useState(0)
   const openModal=()=>setIsModalOpen(true)
   const closeModal=()=>setIsModalOpen(false)
-  const [name,setName] = useState()
-  const [phone,setPhone] = useState()
+  const [name,setName] = useState("")
+  const [phone,setPhone] = useState("")
   const increment = ()=> {
     if(guestCount >=6) return
     setGuestCount((prev) => prev +1)
@@ -76,7 +77,7 @@ function BottomNavbar() {
         onChange={(e)=>setPhone(e.target.value)}
         type="number"
         name=""
-        placeholder="+91-9999999999"
+        placeholder="+91-1234567892"
         id=""
         className="bg-transparent flex-1 text-white focus:outline-none"
       />
