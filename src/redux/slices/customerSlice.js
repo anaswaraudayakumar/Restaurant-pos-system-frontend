@@ -5,7 +5,8 @@ const initialState = {
     customerName:"",
     customerPhone:"",
     guests:0,
-    tableNo:""
+    tableNo:"",
+    tableId: "" 
 }
 
 const customerSlice = createSlice({
@@ -18,16 +19,19 @@ const customerSlice = createSlice({
             state.customerName= name
             state.customerPhone=phone
             state.guests=guests
+            
         },
         removeCustomer:(state,action)=>{
             state.customerName=""
              state.customerPhone=""
             state.guests=0
             state.tableNo=""
+            state.tableId = ""
        
     },
     updateTable:(state,action)=>{
         state.tableNo = action.payload.tableNo
+        state.tableId = action.payload.tableId 
     }
 }
 })

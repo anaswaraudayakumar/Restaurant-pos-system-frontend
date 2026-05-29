@@ -16,8 +16,8 @@ import apiService from "../api/apiService";
  }
 
  //get single user details
-  export const singleUserAPI = async(id)=>{
-    return await apiService("GET",`/user/${id}`)
+  export const singleUserAPI = async()=>{
+    return await apiService("GET","/user/profile")
  }
 
  //order
@@ -35,8 +35,8 @@ import apiService from "../api/apiService";
  }
 
  //update order
- export const editOrderAPI = async (id,orderDetails)=>{
-    return await apiService("PUT",`/one-order/${id}`,orderDetails)
+ export const updateOrderAPI = async (id,orderStatus)=>{
+    return await apiService("PUT",`/one-order/${id}`,orderStatus)
  }
 
 //  table 
@@ -51,4 +51,13 @@ export const getAllTableAPI =  async()=>{
 //update table
 export const updateTableAPI =  async(id,reqBody)=>{
     return await apiService("PUT",`/edit-table/${id}`,reqBody)
+}
+
+//payment
+export const createOrderAPI = async (reqBody) =>{
+   return await apiService("POST","/create-order",reqBody)
+}
+
+export const verifyPaymentAPI = async (reqBody) => {
+    return await apiService("POST","/verify-payment",reqBody )
 }

@@ -3,7 +3,7 @@ import { popularFoods } from '../../constants'
 
 function PopularDishes() {
   return (
-    <div className='mt-6 pr-6 pb-14 '>
+    <div className='my-4 pr-6 pb-14 overflow-hidden'>
         <div className='bg-gray-900 w-full cursor-pointer rounded-lg'>
             <div className='flex justify-between items-center px-6 py-4'>
                 <h1 className='text-white text-lg font-semibold tracking-wide'>Popular Dishes</h1>

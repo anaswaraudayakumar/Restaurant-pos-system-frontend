@@ -1,11 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BottomNavbar from '../components/common/BottomNavbar'
 import OrderCards from '../components/orders/OrderCards'
 import BackDrop from '../components/common/BackDrop'
 import Header from '../components/common/Header'
+import { allOrdersAPI } from '../services/allApi'
 
 function Orders() {
   const [status,setStatus] = useState("all")
+  const [orders,setOrders] = useState([])
+  const[loading,setLoading]= useState(true)
+  useEffect(()=>{
+    const fetchOrders = async ()=>{
+      try {
+        const response = await allOrdersAPI()
+        setOrders(response.data.orders)
+      } catch (error) {
+        console.log(error);
+        
+      }finally{
+        setLoading(false)
+      }
+     
+    }
+     fetchOrders()
+    },[])
+     const filteredOrders = orders.filter((order) => {
+    if (status === "all") return true
+    if (status === "progress") return order.orderStatus === "In Progress"
+    if (status === "ready") return order.orderStatus === "Ready"
+    if (status === "completed") return order.orderStatus === "Completed"
+  })
   return (
     <>
     <Header/>
@@ -25,19 +49,17 @@ function Orders() {
           </div>
         </div>
        <div className='flex gap-1 flex-wrap items-center px-16 py-4 mb-12'> 
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-        <OrderCards/>
-  
-        
+         { 
+         loading ? (
+           <p className='text-white'>Loading Orders</p>
+         ):  filteredOrders.length === 0 ? ( <p className='text-gray-400'>No Order Found</p> )
+         :(
+            filteredOrders.map((order) => (
+              <OrderCards key={order._id} order={order} />  
+            ))
+         )
+
+         }
   
        </div>
        

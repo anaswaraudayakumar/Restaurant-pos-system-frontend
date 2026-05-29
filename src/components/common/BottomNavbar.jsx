@@ -7,6 +7,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Modal from './Modal'
 import { useDispatch } from 'react-redux'
 import { setCustomer } from '../../redux/slices/customerSlice'
+import { toast } from 'react-toastify';
+
 
 function BottomNavbar() {
   const navigate =useNavigate(0)
@@ -29,12 +31,34 @@ function BottomNavbar() {
   }
   const isActive =(path)=>location.pathname === path
    
-  const handleOrderCreate = ()=>{
-    //data to store
-    dispatch(setCustomer({name,phone,guests:guestCount}))
-    navigate("/tables")
+ const handleOrderCreate = () => {
+
+  const cleanPhone = phone.replace(/\D/g, "");
+
+  if (!name || !cleanPhone || guestCount === 0) {
+    toast.warning("Please fill all fields");
+    return;
   }
 
+  // STRICT VALIDATION (this fixes your backend error)
+  if (cleanPhone.length !== 10) {
+    alert("Enter valid 10-digit phone number");
+    return;
+  }
+
+  dispatch(setCustomer({
+    name,
+    phone: cleanPhone,
+    guests: guestCount
+  }));
+
+  closeModal();
+  setName("");
+  setPhone("");
+  setGuestCount(0);
+
+  navigate("/tables");
+}
   
     return (
     <div className='fixed bottom-0 left-0 right-0 bg-gray-900 flex justify-around p-3'>
@@ -75,7 +99,7 @@ function BottomNavbar() {
       <input
       value={phone}
         onChange={(e)=>setPhone(e.target.value)}
-        type="number"
+        type="tel"
         name=""
         placeholder="+91-1234567892"
         id=""

@@ -29,6 +29,7 @@ function Login() {
       mutationFn:(loginDetails)=> loginAPI(loginDetails),
       onSuccess:(response)=>{
         toast.success(response.data.message)
+        formik.resetForm()
         console.log(response);
         const {user}= response.data
         const{_id,name,email,phone,role} = user

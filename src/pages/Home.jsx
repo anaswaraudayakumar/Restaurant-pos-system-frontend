@@ -45,7 +45,7 @@ function Home() {
          <div className='md:flex justify-between items-center px-8 mt-5 '>
           {/* greetings */}
           <div >
-            <h1 className='text-white  text-xl md:text-2xl font-semibold tracking-wide '>have a greate Day, {userDetails.name} </h1>
+            <h1 className='text-white  text-xl md:text-2xl font-semibold tracking-wide '>Have a greate Day, {userDetails.name} </h1>
             <p className='text-gray-100 text-sm'>Give Your Best Service for customers ✨</p>
           </div>
           {/* date and time */}

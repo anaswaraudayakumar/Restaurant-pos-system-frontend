@@ -6,6 +6,8 @@ import { useMutation } from "@tanstack/react-query";
 import { logoutAPI } from '../../services/allApi';
 import { removeUser } from '../../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { LuCookingPot } from "react-icons/lu";
+import { MdDashboard } from 'react-icons/md';
 
 
 function Header() {
@@ -29,7 +31,7 @@ function Header() {
   return (
     <>
       <div className='bg-gray-900 flex  justify-between items-center' >
-        <div className='flex gap-1.5'>
+        <div onClick={()=>navigate("/")} className='flex gap-1.5 cursor-pointer '>
           {/* logo */}
           <img src='/logo.png' width={'80px'} height={'80px'} className='px-2' alt="res_logo" />
           {/* name */}
@@ -37,15 +39,28 @@ function Header() {
         </div>
         {/* search */}
 
-        <div className='border border-gray-300 p-2 md:flex  hidden  gap-1 rounded  '>
-          <FaSearch className='text-xl text-gray-100 pt-1' />
-          <input type="text" placeholder='Search ' className='text-gray-100 text-xl outline-none ' />
-        </div>
+      
         <div className='flex items-center gap-2 justify-between px-4 py-3'>
           {/* Bell Icon */}
           <div className='p-2  cursor-pointer  transition'>
             <FaBell className='text-white text-xl' />
           </div>
+          {/* dashboard */}
+          {
+            userDetails.role ==="Admin" && (
+              <div onClick={()=>navigate("/dashboard")} className='p-2  cursor-pointer  transition'>
+            <MdDashboard className='text-white text-2xl' />
+          </div>
+            )
+          }
+          {/* chef page */}
+          {
+            userDetails.role ==="Chef" && (
+              <div  onClick={()=>navigate("/chef")} className='p-2  cursor-pointer  transition'>
+            <LuCookingPot className='text-white text-2xl' />
+          </div>
+            )
+          }
           {/* User Profile */}
           <div className='flex items-center gap-3 border border-gray-300 rounded px-3 py-2'>
             <FaUser className='text-4xl text-gray-100' />
