@@ -13,7 +13,7 @@ function CartItem() {
 
   const handleRemove = (itemId) => dispatch(removeItem(itemId))
 
-  // ✅ called by BillInfo after successful order
+  // called by BillInfo after successful order
   const handleOrderSuccess = () => {
     dispatch(clearCart())
     dispatch(removeCustomer())

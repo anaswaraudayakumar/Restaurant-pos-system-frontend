@@ -45,7 +45,7 @@ function Register({SetIsRegister}) {
     }),
 
     onSubmit: (values) => {
-      console.log(values)
+      // console.log(values)
       registerMutation.mutate(values)
     },
   })
@@ -56,7 +56,7 @@ function Register({SetIsRegister}) {
           formik.resetForm()
           setSelectedRole('')
           const {data} = response
-          console.log(data);
+          // console.log(data);
           setTimeout(()=>{
              SetIsRegister(false)
           },2000)

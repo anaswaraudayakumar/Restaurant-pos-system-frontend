@@ -19,7 +19,7 @@ function Modal({setIsTableModalOpen}) {
     }
     const handlesubmit = (e)=>{
         e.preventDefault()
-        console.log(tableData);
+        // console.log(tableData);
         tableMutation.mutate(tableData)
     }
     const tableMutation = useMutation({
@@ -27,7 +27,7 @@ function Modal({setIsTableModalOpen}) {
      onSuccess:(data)=>{
       toast.success(data.data.message)
       setIsTableModalOpen(false)
-      console.log(data);
+      // console.log(data);
       
      },
      onError:(error)=>{

@@ -59,7 +59,7 @@ function BillInfo({ onOrderSuccess }) {
       items: cart
     };
 
-    console.log("Sending orderDetails:", orderDetails);   // verify once
+    // console.log("Sending orderDetails:", orderDetails);   // verify once
     const response = await addOrderAPI(orderDetails);
     return response;
   }
