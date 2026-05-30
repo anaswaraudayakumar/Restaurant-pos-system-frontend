@@ -38,7 +38,7 @@ function Home() {
   return (
     <>
     <Header/>
-      <section  className=' bg-gray-950 overflow-hidden gap-3  flex'>
+      <section  className=' bg-gray-950 min-h-screen  overflow-hidden gap-3  flex'>
         
         {/* left side */}
         <div className=' flex-3 bg-neutral-900/50  ' >
